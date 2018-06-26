@@ -6,7 +6,7 @@
         "ng": "ng",
         "electron": "electron",
         "wait": "wait-on",
-        "start": "run-p electron:build:dev serve",
+        "start": "run-p build:electron:dev serve",
         "serve": "run-p \"ng -- serve\" start:electron -r",
         "build:angular:dist": "ng build --prod",
         "build:electron:dev": "webpack --require ts-node/register",
