@@ -17,7 +17,9 @@
         "test:e2e": "run-s build:electron:dev \"ng -- e2e\"",
         "lint": "run-s lint:*",
         "lint:angular": "ng lint ng-electron --format=verbose --fix",
-        "lint:electron": "tslint -p src/main/tsconfig.json --format verbose --fix",
+        "lint:electron": "run-s lint:electron:*",
+        "lint:electron:src": "tslint -p src/main/tsconfig.json --format verbose --fix",
+        "lint:electron:spec": "tslint -p src/main/tsconfig.spec.json --format verbose --fix",
         "lint:e2e": "ng lint ng-electron-e2e --format=verbose --fix",
         "lint-staged": "lint-staged",
         "precommit": "run-s lint-staged lint"
