@@ -21,8 +21,7 @@
         "lint:electron:src": "tslint -p src/main/tsconfig.json --format verbose --fix",
         "lint:electron:spec": "tslint -p src/main/tsconfig.spec.json --format verbose --fix",
         "lint:e2e": "ng lint ng-electron-e2e --format=verbose --fix",
-        "lint-staged": "lint-staged",
-        "precommit": "run-s lint-staged lint"
+        "precommit": "lint-staged"
     },
     "lint-staged": {
         "ignore": [
@@ -32,6 +31,22 @@
         "linters": {
             "*.{ts,css,scss,js,json,md}": [
                 "prettier --write",
+                "git add"
+            ],
+            "src/renderer/**/*.{ts,css,scss,html}": [
+                "npm run lint:angular",
+                "git add"
+            ],
+            "e2e/src/**/*.ts": [
+                "npm run lint:e2e",
+                "git add"
+            ],
+            "src/main/**/*.spec.ts": [
+                "npm run lint:electron:spec",
+                "git add"
+            ],
+            "src/main/**/*[!.spec].ts": [
+                "npm run lint:electron:src",
                 "git add"
             ]
         }
